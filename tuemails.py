@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#Based on tutorial here:  http://www.voidynullness.net/blog/2013/07/25/gmail-email-with-python-via-imap/
 
 import sys
 import imaplib
@@ -6,8 +7,8 @@ import getpass
 import email
 import datetime
 
-EMAIL_ADDRESS="YOURADDRESSHERE"
-FOLDER='YOURFOLDERHERE'
+EMAIL_ADDRESS="vickiboykis@gmail.com"
+FOLDER='tualert'
 M = imaplib.IMAP4_SSL('imap.gmail.com')
 
 try:
@@ -32,12 +33,12 @@ def process_mailbox(M):
 
       msg = email.message_from_string(data[0][1])
       #see representations of an email message: https://docs.python.org/2/library/email.message.html
-      #and this Stackoverflow
+      #and this thread: to pull out only plaintext email contents (no html crap):http://www.gossamer-threads.com/lists/python/python/162682
       for part in msg.walk():
-      	typ = part.get_content_type() 
-      	if typ and typ.lower() == "text/plain": 
-			# Found the first text/plain part 
-			print part.get_payload(decode=True)  
+        typ = part.get_content_type() 
+        if typ and typ.lower() == "text/plain": 
+      # Found the first text/plain part 
+      print part.get_payload(decode=True)  
       print 'Message %s: %s' % (num, msg['Subject'])
 
 
