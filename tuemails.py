@@ -7,8 +7,13 @@ import getpass
 import email
 import datetime
 
+<<<<<<< HEAD
 EMAIL_ADDRESS="YOUREMAIL"
 FOLDER='YOURFOLDER'
+=======
+EMAIL_ADDRESS="vickiboykis@gmail.com"
+FOLDER='tualert'
+>>>>>>> 4d276475b84d2889460445a8e049ab3c416c2341
 M = imaplib.IMAP4_SSL('imap.gmail.com')
 
 try:
